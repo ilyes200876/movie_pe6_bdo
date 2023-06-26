@@ -1,4 +1,4 @@
-<?php include_once __DIR__ . '/../vender/autoload.php'
+<?php include_once __DIR__ . '/../vendor/autoload.php'
 ?>
 
 <!DOCTYPE html>
