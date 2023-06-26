@@ -32,5 +32,10 @@ class PDOService
     return $this->pwd;
   }
 
+  public function findAllMovie():array
+  {
+    return $this->pdo->query('SELECT * FROM movie')->fetchAll();
+  }
+
 }
 
