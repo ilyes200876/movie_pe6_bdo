@@ -1,0 +1,20 @@
+{
+    "name": "ilyes/movies",
+    "description": "site sur les différents films",
+    "type": "project",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "y"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "symfony/var-dumper": "7.0.x-dev"
+    }
+}
