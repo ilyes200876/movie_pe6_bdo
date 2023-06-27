@@ -10,10 +10,6 @@ class Movie
   private string $title;
   private DateTime $releaseDate;
 
-  public function __construct() 
-  {
-    
-  }
   
   public function getTitle():string
   {

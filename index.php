@@ -9,6 +9,7 @@ use App\Services\PDOService;
 
 $pdo = new MovieRepository();
 
-dump($pdo->findAllMovie());
-dump($pdo->findOneMovie());
-dump($pdo->findMovie());
+// dump($pdo->findAllMovie());
+// dump($pdo->findOneMovie());
+// dump($pdo->findMovie());
+dump($pdo->findById(3));
