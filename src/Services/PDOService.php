@@ -38,12 +38,14 @@ class PDOService
     return $this->pdo->query('SELECT * FROM movie')->fetchAll();
   }
 
-  public function findMovie():Movie
+  // public function findMovie():Movie
+  // {
+  //   return $query = $this->pdo->query('SELECT * FROM movie')->fetchObject(movie::class);
+  // } 
+
+  public function findMovie()
   {
-    $query = $this->pdo->query('SELECT * FROM movie');
-    return $query->fetchObject(movie::class);
-  }
-
-
+    return $query = $this->pdo->query('SELECT * FROM movie')->fetchAll(PDO::FETCH_CLASS, movie::class);
+  } 
 }
 
