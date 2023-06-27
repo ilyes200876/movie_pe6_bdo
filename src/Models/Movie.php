@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+
 use DateTime;
 
-class movie
+class Movie
 {
   private string $title;
   private DateTime $releaseDate;
@@ -34,4 +35,5 @@ class movie
     $this->releaseDate = $releaseDate;
   }
 
+  
 }
