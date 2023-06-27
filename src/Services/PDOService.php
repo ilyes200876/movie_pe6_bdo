@@ -18,6 +18,12 @@ class PDOService
     $this->pdo = new PDO($this->dsn, $this->user, $this->pwd);
   }
 
+  public function getPdo(): PDO
+    {
+        return $this->pdo;
+    }
+
+
   public function getDsn():string
   {
     return $this->dsn;
@@ -33,19 +39,6 @@ class PDOService
     return $this->pwd;
   }
 
-  public function findAllMovie():array
-  {
-    return $this->pdo->query('SELECT * FROM movie')->fetchAll();
-  }
 
-  // public function findMovie():Movie
-  // {
-  //   return $query = $this->pdo->query('SELECT * FROM movie')->fetchObject(movie::class);
-  // } 
-
-  public function findMovie()
-  {
-    return $query = $this->pdo->query('SELECT * FROM movie')->fetchAll(PDO::FETCH_CLASS, movie::class);
-  } 
 }
 
