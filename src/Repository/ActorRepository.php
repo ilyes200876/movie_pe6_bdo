@@ -2,17 +2,17 @@
 
 namespace App\Repository;
 
-use App\Models\Movie;
+use App\Models\Actor;
 use App\Services\PDOService;
 use PDO;
 
 /**
  * Summary of MovieRepository
  */
-class MovieRepository
+class ActorRepository
 {
   private PDOService $pdoService;
-  private string $queryAll = 'SELECT * FROM movie';
+  private string $queryAll = 'SELECT * FROM actor';
   
   public function __construct()
   {
@@ -23,7 +23,7 @@ class MovieRepository
    * Summary of findAllMovie
    * @return array
    */
-  public function findAllMovie():array
+  public function findAllActor():array
   {
     return $this->pdoService->getPdo()->query($this->queryAll)->fetchAll();
   }
@@ -32,31 +32,31 @@ class MovieRepository
    * Summary of findOneMovie
    * @return \App\Models\Movie
    */
-  public function findOneMovie():Movie
+  public function findOneActor():Actor
   {
-    return $this->pdoService->getPdo()->query($this->queryAll)->fetchObject(movie::class);
+    return $this->pdoService->getPdo()->query($this->queryAll)->fetchObject(Actor::class);
   } 
 
   /**
    * Summary of findMovie
    * @return array
    */
-  public function findMovie():array
+  public function findActor():array
   {
-    return $this->pdoService->getPdo()->query($this->queryAll)->fetchAll(PDO::FETCH_CLASS, movie::class);
+    return $this->pdoService->getPdo()->query($this->queryAll)->fetchAll(PDO::FETCH_CLASS, Actor::class);
   } 
 
   /**
   * Summary of findById
   * @param int $id
-  * @return \App\Models\Movie|bool
+  * @return \App\Models\Actor|bool
   */
-	public function findById(int $id):Movie|bool
+	public function findById(int $id):Actor|bool
   {
-    $query = $this->pdoService->getPdo()->prepare('SELECT * FROM movie WHERE id= ?');
+    $query = $this->pdoService->getPdo()->prepare('SELECT * FROM actor WHERE id= ?');
     $query->bindValue(1, $id);
     $query->execute();
-    return $query->fetchObject(Movie::class);
+    return $query->fetchObject(Actor::class);
   }
 
 }
