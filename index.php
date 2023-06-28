@@ -11,7 +11,6 @@ use App\Services\PDOService;
 // dump(new PDOService());
 
 $pdo = new MovieRepository();
-
 $pdo1 = new ActorRepository();
 $pdo2 = new ActorRepository();
 $actor = new Actor();
@@ -19,6 +18,7 @@ $actor->setFirstName("Emma");
 $actor->setLastName("Watson");
 $movie = new Movie;
 
+dump($pdo->findAllMovie());
 // dump($pdo1->findAllActor());
 // dump($pdo1->findOneActor());
 // dump($pdo1->findActor());
@@ -32,3 +32,6 @@ dump($movie);
 $movie->removeActor($pdo1->findById(2));
 
 dump($movie);
+
+dump($pdo->findByTitle('Harry Potter'));
+dump($pdo->findByTitle('trees'));
