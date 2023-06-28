@@ -5,7 +5,8 @@ namespace App\Repository;
 use App\Models\Movie;
 use App\Services\PDOService;
 use PDO;
-use DateTime;
+// use DateTime;
+use App\Models\Actor;
 
 /**
  * Summary of MovieRepository
@@ -85,4 +86,20 @@ class MovieRepository
     return $movie;
   }
 
+  public function addActorMovie(Movie $movie):Movie
+  {
+    $actors = $movie->getActors();
+    foreach ($actors as $actor){
+
+      $query = $this->pdoService->getPdo()->prepare('INSERT INTO movieactor Value (NULL, :id_actor, :id_movie)');
+      $idActor = $actor->getId();
+      $idMovie = $movie->getId();
+
+      $query->bindParam(':id_actor', $idActor);
+      $query->bindParam(':id_movie', $idMovie);
+      $query->execute();
+    }
+
+    return $movie;
+  }
 }

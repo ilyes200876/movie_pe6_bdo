@@ -4,10 +4,17 @@ namespace App\Models;
 
 class Actor
 {
+	private int $id;
   private string $firstName;
   private string $lastName;
 
-
+	/**
+   * @return int
+   */
+  public function getId():int 
+  {
+    return $this->id;
+  }
 	/**
 	 * @return string
 	 */

@@ -7,10 +7,18 @@ use DateTime;
 
 class Movie
 {
+  private int $id;
   private string $title;
   private DateTime $releaseDate;
   private array $actors = [];
-
+  
+  /**
+   * @return int
+   */
+  public function getId():int 
+  {
+    return $this->id;
+  }
   
   public function getTitle():string
   {
@@ -32,22 +40,16 @@ class Movie
     $this->releaseDate = $releaseDate;
   }
 
-  public function addActor(Actor $actor):void
-  {
-    $this->actors[] = $actor;
-  }
-
-  public function removeActor(Actor $actor):void
-  {
-    if(array_search($actor, $this->actors) !== false){
-      unset($this->actors[array_search($actor, $this->actors)]);
+  public function addActor(Actor $actor): void
+    {
+        $this->actors[] = $actor;
     }
-  }
 
-
-	/**
-	 * @return array
-	 */
+    
+    
+    /**
+     * @return array
+     */
 	public function getActors():array 
   {
 		return $this->actors;
@@ -57,9 +59,16 @@ class Movie
 	 * @param array $actors 
 	 * @return self
 	 */
-	public function setActors(array $actors):void
+  public function setActors(array $actors):void
   {
-		$this->actors = $actors;
+    $this->actors = $actors;
 	}
+
+  public function removeActor(Actor $actor): void
+  {
+      if(array_search($actor, $this->actors) !== true){
+          unset ($this->actors, $actor);
+      }
+  }
 
 }
