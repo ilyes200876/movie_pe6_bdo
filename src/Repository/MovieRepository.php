@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Models\Movie;
 use App\Services\PDOService;
 use PDO;
+use DateTime;
 
 /**
  * Summary of MovieRepository
@@ -73,5 +74,15 @@ class MovieRepository
     return $query->fetchAll($this->pdoService->getPdo()::FETCH_CLASS, Movie::class);
   }
   
+  public function addMovie(Movie $movie):Movie
+  {
+    $query = $this->pdoService->getPdo()->prepare('INSERT INTO movie Value (NULL, :title, :release_date)');
+    $title = $movie->getTitle();
+    $releaseDate = $movie->getReleaseDate()->format('Y-m-d');
+    $query->bindParam(':title', $title);
+    $query->bindParam(':release_date', $releaseDate);
+    $query->execute();
+    return $movie;
+  }
 
 }

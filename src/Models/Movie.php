@@ -32,17 +32,17 @@ class Movie
     $this->releaseDate = $releaseDate;
   }
 
-  public function addActor(Actor $actor): void
-    {
-        $this->actors[] = $actor;
-    }
+  public function addActor(Actor $actor):void
+  {
+    $this->actors[] = $actor;
+  }
 
-    public function removeActor(Actor $actor): void
-    {
-        if(array_search($actor, $this->actors) !== true){
-            unset ($this->actors, $actor);
-        }
+  public function removeActor(Actor $actor):void
+  {
+    if(array_search($actor, $this->actors) !== false){
+      unset($this->actors[array_search($actor, $this->actors)]);
     }
+  }
 
 
 	/**

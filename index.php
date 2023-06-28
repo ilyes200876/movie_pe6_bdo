@@ -14,9 +14,11 @@ $pdo = new MovieRepository();
 $pdo1 = new ActorRepository();
 $pdo2 = new ActorRepository();
 $actor = new Actor();
+$actor1 = new Actor();
 $actor->setFirstName("Emma");
 $actor->setLastName("Watson");
 $movie = new Movie;
+$movie1 = new Movie;
 
 dump($pdo->findAllMovie());
 // dump($pdo1->findAllActor());
@@ -27,11 +29,27 @@ dump($pdo->findAllMovie());
 $movie->addActor($pdo1->findById(1));
 $movie->addActor($pdo1->findById(2));
 
-dump($movie);
+// dump($movie);
 
 $movie->removeActor($pdo1->findById(2));
 
-dump($movie);
+$movie1->setTitle('American Pie 6');
 
-dump($pdo->findByTitle('Harry Potter'));
-dump($pdo->findByTitle('trees'));
+
+$movie1->setReleaseDate(new DateTime('2002-02-20'));
+
+// dump($movie);
+
+// dump($pdo->findByTitle('Harry Potter'));
+// dump($pdo->findByTitle('trees'));
+
+
+dump($pdo->addMovie($movie1));
+
+$actor1->setFirstName('Jhonny');
+$actor1->setLastName('Depp');
+
+dump($pdo1->addActor($actor1));
+
+
+
